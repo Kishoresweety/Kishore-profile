@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kishore — AI, Branding & Digital Growth</title>
+<meta name="description" content="Freelancer specialising in Google Business Optimization, AI Automation, Social Media Growth, and Brand Design."/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --black:#080808;
+    --white:#f5f4f0;
+    --gray-1:#161616;
+    --gray-2:#222222;
+    --gray-3:#444444;
+    --gray-4:#666666;
+    --gray-5:#999999;
+    --gray-6:#c8c8c8;
+    --border:rgba(255,255,255,0.07);
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+
+  html{scroll-behavior:smooth;font-size:16px;}
+  body{background:var(--black);color:var(--gray-6);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;}
+
+  /* ── SCROLL PROGRESS ── */
+  #progress{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--gray-5);z-index:9999;transition:width .05s linear;}
+
+  /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5vw;background:rgba(8,8,8,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+  .logo{font-family:var(--serif);font-size:1.7rem;font-weight:700;color:var(--white);letter-spacing:-.02em;}
+  .logo span{color:var(--gray-4);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--gray-4);text-decoration:none;font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--white);}
+  .nav-cta{padding:.6rem 1.4rem;border:1px solid var(--gray-3);color:var(--gray-5);font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+  .nav-cta:hover{border-color:var(--white);color:var(--white);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+  .hamburger span{width:22px;height:1.5px;background:var(--gray-5);transition:all .3s;}
+
+  /* ── HERO ── */
+  .hero{min-height:calc(100vh - 62px);display:grid;grid-template-columns:1fr 420px;align-items:center;gap:4rem;padding:5rem 5vw 4rem;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.65rem;letter-spacing:.2em;color:var(--gray-4);text-transform:uppercase;margin-bottom:1.5rem;}
+  .blink{width:6px;height:6px;border-radius:50%;background:var(--gray-4);animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+  .hero h1{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:600;color:var(--white);line-height:1.08;letter-spacing:-.025em;margin-bottom:1.6rem;}
+  .hero h1 em{color:var(--gray-4);font-style:italic;}
+  .hero-sub{font-size:.95rem;line-height:1.8;color:var(--gray-4);max-width:480px;margin-bottom:2.4rem;}
+  .btn-group{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-solid{display:inline-block;padding:.9rem 2rem;background:var(--white);color:var(--black);font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .3s;}
+  .btn-solid:hover{background:var(--gray-6);}
+  .btn-ghost{display:inline-block;padding:.9rem 2rem;border:1px solid var(--gray-3);color:var(--gray-5);font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+  .btn-ghost:hover{border-color:var(--white);color:var(--white);}
+
+  /* ── PHOTO ── */
+  .photo-wrap{position:relative;height:500px;}
+  .photo-backdrop{position:absolute;bottom:-16px;right:-16px;width:100%;height:100%;border:1px solid var(--border);background:var(--gray-1);}
+  .photo-img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(100%) contrast(1.05);display:block;}
+  .photo-tag{position:absolute;bottom:-8px;left:0;z-index:3;background:rgba(14,14,14,.95);border:1px solid var(--border);padding:.55rem 1.1rem;font-size:.62rem;letter-spacing:.18em;color:var(--gray-4);text-transform:uppercase;}
+
+  /* ── SECTIONS BASE ── */
+  section{padding:6rem 5vw;}
+  .s-label{font-size:.62rem;letter-spacing:.2em;color:var(--gray-3);text-transform:uppercase;margin-bottom:1rem;}
+  h2{font-family:var(--serif);font-size:clamp(1.9rem,3.8vw,3rem);font-weight:600;color:var(--white);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.6rem;}
+  .hr-line{width:36px;height:1px;background:var(--gray-3);margin:2rem 0;}
+
+  /* ── ABOUT ── */
+  .about{background:var(--gray-1);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+  .about-text p{font-size:.9rem;color:var(--gray-4);line-height:1.85;margin-bottom:1.1rem;}
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .skill{padding:.85rem 1.1rem;border:1px solid var(--border);font-size:.75rem;color:var(--gray-5);letter-spacing:.06em;transition:all .3s;cursor:default;}
+  .skill:hover{border-color:var(--gray-3);color:var(--white);}
+  .about-note{margin-top:1.8rem;padding:1.5rem;background:rgba(255,255,255,.03);border:1px solid var(--border);}
+  .about-note-label{font-size:.6rem;letter-spacing:.18em;color:var(--gray-3);text-transform:uppercase;margin-bottom:.6rem;}
+  .about-note p{font-size:.82rem;color:var(--gray-4);line-height:1.75;}
+
+  /* ── SERVICES ── */
+  .services{background:var(--black);}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3.5rem;}
+  .svc{background:var(--black);padding:2.4rem 2rem;transition:background .3s;cursor:default;}
+  .svc:hover{background:var(--gray-1);}
+  .svc-num{font-family:var(--serif);font-size:.85rem;color:var(--gray-3);font-style:italic;margin-bottom:1.2rem;display:block;}
+  .svc-title{font-family:var(--serif);font-size:1.1rem;color:var(--white);margin-bottom:.8rem;font-weight:600;}
+  .svc-desc{font-size:.78rem;color:var(--gray-4);line-height:1.75;}
+
+  /* ── WORK ── */
+  .work{background:var(--gray-1);}
+  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3.5rem;}
+  .proj{background:var(--gray-1);padding:2.2rem 2rem;transition:background .3s;cursor:default;position:relative;}
+  .proj:hover{background:var(--gray-2);}
+  .proj-cat{font-size:.6rem;letter-spacing:.18em;color:var(--gray-3);text-transform:uppercase;margin-bottom:1rem;}
+  .proj-title{font-family:var(--serif);font-size:1.2rem;color:var(--white);font-weight:600;margin-bottom:.4rem;}
+  .proj-result{font-size:.78rem;color:var(--gray-5);font-style:italic;font-family:var(--serif);margin-bottom:.9rem;}
+  .proj-desc{font-size:.78rem;color:var(--gray-4);line-height:1.7;}
+
+  /* ── STATS ── */
+  .stats{background:var(--black);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+  .stat{background:var(--black);padding:3.5rem 2rem;text-align:center;}
+  .stat-num{font-family:var(--serif);font-size:3.2rem;color:var(--white);font-weight:700;display:block;line-height:1;}
+  .stat-lbl{font-size:.65rem;letter-spacing:.18em;color:var(--gray-4);text-transform:uppercase;margin-top:.7rem;display:block;}
+
+  /* ── TESTIMONIALS ── */
+  .testi{background:var(--gray-1);}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem;}
+  .tcard{background:var(--gray-2);border:1px solid var(--border);padding:2rem 1.8rem;position:relative;}
+  .tcard::before{content:'\201C';position:absolute;top:14px;right:18px;font-family:var(--serif);font-size:4.5rem;color:var(--gray-2);line-height:1;pointer-events:none;-webkit-text-stroke:1px var(--gray-3);}
+  .tcard-text{font-size:.85rem;color:var(--gray-4);line-height:1.85;font-style:italic;margin-bottom:1.4rem;}
+  .tcard-name{font-size:.85rem;color:var(--white);font-weight:500;}
+  .tcard-role{font-size:.7rem;color:var(--gray-4);margin-top:.25rem;}
+
+  /* ── CONTACT ── */
+  .contact{background:var(--black);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;margin-top:3.5rem;}
+  .contact-info h3{font-family:var(--serif);font-size:1.5rem;color:var(--white);margin-bottom:.9rem;font-weight:600;}
+  .contact-info p{font-size:.85rem;color:var(--gray-4);line-height:1.8;margin-bottom:2rem;}
+  .clink{display:flex;align-items:center;gap:.85rem;color:var(--gray-4);text-decoration:none;font-size:.78rem;margin-bottom:.9rem;letter-spacing:.04em;transition:color .3s;}
+  .clink:hover{color:var(--white);}
+  .clink-icon{width:30px;height:30px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+  .demo-note{font-size:.62rem;color:var(--gray-3);margin-top:1.4rem;letter-spacing:.08em;}
+
+  /* ── FORM ── */
+  .form{display:flex;flex-direction:column;gap:.9rem;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+  .form input,.form textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--white);padding:.85rem 1rem;font-family:var(--sans);font-size:.82rem;font-weight:300;width:100%;transition:border-color .3s;outline:none;}
+  .form input::placeholder,.form textarea::placeholder{color:var(--gray-3);}
+  .form input:focus,.form textarea:focus{border-color:var(--gray-3);}
+  .form textarea{min-height:130px;resize:vertical;}
+  .form-btn{padding:.95rem;background:var(--white);color:var(--black);border:none;font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+  .form-btn:hover{background:var(--gray-6);}
+  .form-success{text-align:center;padding:3rem;border:1px solid var(--border);}
+  .form-success .check{font-size:2rem;margin-bottom:.8rem;}
+  .form-success h4{font-family:var(--serif);font-size:1.2rem;color:var(--white);margin-bottom:.5rem;font-weight:600;}
+  .form-success p{font-size:.82rem;color:var(--gray-4);}
+
+  /* ── FOOTER ── */
+  footer{padding:1.8rem 5vw;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--gray-1);}
+  .footer-copy{font-size:.72rem;color:var(--gray-3);}
+  .footer-links{display:flex;gap:1.6rem;}
+  .footer-links a{font-size:.72rem;color:var(--gray-3);text-decoration:none;transition:color .3s;}
+  .footer-links a:hover{color:var(--gray-5);}
+
+  /* ── ANIMATIONS ── */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;padding:3rem 5vw;text-align:center;gap:2.5rem;}
+    .hero-sub{margin:0 auto 2rem;}
+    .btn-group{justify-content:center;}
+    .photo-wrap{height:360px;max-width:300px;margin:0 auto;}
+    .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .work-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  }
+  @media(max-width:600px){
+    .services-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+    .nav-links,.nav-cta{display:none;}
+    .hamburger{display:flex;}
+  }
+  .mobile-menu{display:none;flex-direction:column;gap:1.4rem;position:absolute;top:62px;left:0;right:0;background:rgba(8,8,8,.97);padding:2rem 5vw;border-bottom:1px solid var(--border);z-index:99;}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{color:var(--gray-4);text-decoration:none;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#work" onclick="closeMobile()">Work</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">K<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow"><span class="blink"></span>Available for new projects</div>
+    <h1>Helping Businesses Grow Through <em>AI, Branding</em> &amp; Digital Presence</h1>
+    <p class="hero-sub">I'm Kishore — a freelancer from Chennai specialising in Google Business Optimization, AI Automation, Social Media Growth, and Brand Design that converts.</p>
+    <div class="btn-group">
+      <a href="#services" class="btn-solid">View Services</a>
+      <a href="#contact" class="btn-ghost">Contact Me</a>
+    </div>
+  </div>
+  <div class="photo-wrap">
+    <div class="photo-backdrop"></div>
+    <img class="photo-img" src="data:image/jpeg;base64,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" alt="Kishore"/>
+    <div class="photo-tag">Kishore · Chennai, India</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="s-label">Who I am</div>
+  <div class="about-grid">
+    <div>
+      <h2>Turning Digital Presence Into Real Business Growth</h2>
+      <div class="hr-line"></div>
+      <div class="about-text">
+        <p>I'm a multidisciplinary freelancer with a Computer Science background and a deep passion for building digital presence that actually converts. I bridge the gap between technology and branding — using AI tools, design thinking, and growth strategy.</p>
+        <p>From optimising a restaurant's Google profile to automating a retail chatbot, my work is always grounded in measurable results. I care about impact, not just deliverables. Every project I take on is treated like it's my own business.</p>
+        <p>Based in Chennai, working with clients across India and internationally.</p>
+      </div>
+    </div>
+    <div>
+      <div class="s-label">Core Expertise</div>
+      <div class="skills-grid" style="margin-top:1rem;">
+        <div class="skill">Google Business Profile</div>
+        <div class="skill">AI Automation</div>
+        <div class="skill">Social Media Growth</div>
+        <div class="skill">Logo Design</div>
+        <div class="skill">Poster Design</div>
+        <div class="skill">Business Branding</div>
+      </div>
+      <div class="about-note">
+        <div class="about-note-label">Currently</div>
+        <p>Open to freelance projects in AI automation, brand identity, and digital growth strategy. Response within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="s-label">What I offer</div>
+  <h2>Services Built Around Your Growth</h2>
+  <div class="services-grid">
+    <div class="svc reveal">
+      <span class="svc-num">01</span>
+      <div class="svc-title">Google Business Profile</div>
+      <p class="svc-desc">Rank higher in local search. Optimised profiles that bring real foot traffic, calls, and enquiries directly to your business.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">02</span>
+      <div class="svc-title">AI-Powered Automation</div>
+      <p class="svc-desc">Let intelligent systems handle the repetitive work. I build custom AI workflows — chatbots, auto-replies, lead funnels — that save hours every week.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">03</span>
+      <div class="svc-title">Social Media Growth</div>
+      <p class="svc-desc">Data-backed content strategy and audience growth plans for Instagram, LinkedIn, and Facebook — focused on real engagement, not vanity metrics.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">04</span>
+      <div class="svc-title">Logo Design</div>
+      <p class="svc-desc">Timeless, bold identity marks that communicate who you are before a word is spoken. Clean, scalable, and built for your audience.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">05</span>
+      <div class="svc-title">Promotional Poster Design</div>
+      <p class="svc-desc">High-impact promotional visuals for events, offers, and launches. Designed to stop the scroll and drive real action from your audience.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-num">06</span>
+      <div class="svc-title">Brand Presence Strategy</div>
+      <p class="svc-desc">Holistic brand strategy — voice, visuals, and positioning — so every touchpoint feels intentional and builds trust with your customers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="s-label">Selected work</div>
+  <h2>Results That Speak For Themselves</h2>
+  <div class="work-grid">
+    <div class="proj reveal">
+      <span class="proj-cat">Local SEO · Google Business</span>
+      <div class="proj-title">Chennai Restaurant Chain</div>
+      <div class="proj-result">+340% Google calls in 60 days</div>
+      <p class="proj-desc">Complete GBP overhaul including photo strategy, Q&amp;A optimisation, review management, and weekly posting cadence.</p>
+    </div>
+    <div class="proj reveal">
+      <span class="proj-cat">AI Automation</span>
+      <div class="proj-title">Retail AI Chatbot</div>
+      <div class="proj-result">80% of support queries automated</div>
+      <p class="proj-desc">WhatsApp chatbot for a fashion boutique handling FAQs, product availability, and order tracking — 24/7 with zero human effort.</p>
+    </div>
+    <div class="proj reveal">
+      <span class="proj-cat">Brand Design</span>
+      <div class="proj-title">FitEdge Gym — Brand Identity</div>
+      <div class="proj-result">Full visual identity from scratch</div>
+      <p class="proj-desc">Logo, colour system, poster campaign, and social media templates created ahead of their gym launch in Chennai.</p>
+    </div>
+    <div class="proj reveal">
+      <span class="proj-cat">Instagram Growth Strategy</span>
+      <div class="proj-title">D2C Skincare Brand</div>
+      <div class="proj-result">0 → 12K followers in 90 days</div>
+      <p class="proj-desc">Viral content strategy with reels scripting, carousel frameworks, hashtag research, and engagement loops for organic growth.</p>
+    </div>
+    <div class="proj reveal">
+      <span class="proj-cat">Logo Design</span>
+      <div class="proj-title">Minimal Logo Collection</div>
+      <div class="proj-result">12 brands redesigned</div>
+      <p class="proj-desc">Clean, premium wordmarks and icon marks for modern startups across e-commerce, consulting, and food &amp; beverage sectors.</p>
+    </div>
+    <div class="proj reveal" style="background:var(--gray-2);display:flex;align-items:center;justify-content:center;min-height:180px;">
+      <div style="text-align:center;">
+        <div style="font-family:var(--serif);font-size:1rem;color:var(--gray-4);font-style:italic;margin-bottom:.8rem;">Your project could be next</div>
+        <a href="#contact" class="btn-ghost" style="font-size:.65rem;">Let's Talk →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal">
+      <span class="stat-num" data-target="50">0</span><span style="font-family:var(--serif);font-size:2.2rem;color:var(--white);">+</span>
+      <span class="stat-lbl">Businesses Helped</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat-num" data-target="120">0</span><span style="font-family:var(--serif);font-size:2.2rem;color:var(--white);">+</span>
+      <span class="stat-lbl">Designs Created</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat-num" data-target="30">0</span><span style="font-family:var(--serif);font-size:2.2rem;color:var(--white);">+</span>
+      <span class="stat-lbl">Growth Campaigns</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat-num" data-target="98">0</span><span style="font-family:var(--serif);font-size:2.2rem;color:var(--white);">%</span>
+      <span class="stat-lbl">Client Satisfaction</span>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="s-label">Client words</div>
+  <h2>What Clients Say</h2>
+  <div class="testi-grid">
+    <div class="tcard reveal">
+      <p class="tcard-text">"Kishore transformed our Google listing completely. Calls went up within weeks and we started getting customers who found us specifically through Search. Incredibly professional."</p>
+      <div class="tcard-name">Rajesh Kumar</div>
+      <div class="tcard-role">Restaurant Owner, Chennai</div>
+    </div>
+    <div class="tcard reveal">
+      <p class="tcard-text">"The Instagram strategy he built for us was a genuine game changer. Real growth, not vanity metrics — actual customers engaging and buying. I recommend him without hesitation."</p>
+      <div class="tcard-name">Priya Sharma</div>
+      <div class="tcard-role">D2C Brand Founder</div>
+    </div>
+    <div class="tcard reveal">
+      <p class="tcard-text">"The AI automation chatbot he built has saved us at least 3 hours every single day. Our team handles complex queries now while the bot handles everything routine. Worth every rupee."</p>
+      <div class="tcard-name">Arun Logistics</div>
+      <div class="tcard-role">SME Owner, Tamil Nadu</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="s-label">Get in touch</div>
+  <h2>Let's Build Your Business Presence</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Ready to work together?</h3>
+      <p>Whether you need a Google profile overhaul, an AI workflow, or a brand refresh — I'm here. Drop me a message and I'll respond within 24 hours.</p>
+      <a href="mailto:kishore@example.com" class="clink">
+        <span class="clink-icon">✉</span>kishore@example.com
+      </a>
+      <a href="https://wa.me/919999900000" class="clink">
+        <span class="clink-icon">💬</span>+91 99999 00000 (WhatsApp)
+      </a>
+      <a href="#" class="clink">
+        <span class="clink-icon">📸</span>@kishore.creates
+      </a>
+      <a href="#" class="clink">
+        <span class="clink-icon">💼</span>linkedin.com/in/kishore
+      </a>
+      <p class="demo-note">↑ Replace with your real contact details before going live.</p>
+    </div>
+    <div>
+      <form class="form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" required/>
+          <input type="email" placeholder="Email Address" required/>
+        </div>
+        <input type="text" placeholder="Subject (e.g. Google Profile Optimization)"/>
+        <textarea placeholder="Tell me about your project — what do you need and what results are you looking for?"></textarea>
+        <button type="submit" class="form-btn">Send Message →</button>
+      </form>
+      <div class="form-success" id="formSuccess" style="display:none;">
+        <div class="check">✓</div>
+        <h4>Message Sent</h4>
+        <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Kishore · All rights reserved · Chennai, India</div>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll progress
+  window.addEventListener('scroll', function(){
+    var el = document.documentElement;
+    var pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+    document.getElementById('progress').style.width = pct + '%';
+    // Active nav
+    ['about','services','work','contact'].forEach(function(id){
+      var sec = document.getElementById(id);
+      if(!sec) return;
+      var r = sec.getBoundingClientRect();
+      var links = document.querySelectorAll('.nav-links a[href="#'+id+'"]');
+      links.forEach(function(a){
+        if(r.top < 140 && r.bottom > 80) a.classList.add('active');
+        else a.classList.remove('active');
+      });
+    });
+  });
+
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:.12});
+  reveals.forEach(function(r){io.observe(r);});
+
+  // Counter animation
+  var counters = document.querySelectorAll('.stat-num[data-target]');
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var el = e.target, target = +el.getAttribute('data-target'), dur = 1400, step = 16;
+        var inc = target / (dur / step);
+        var cur = 0;
+        var timer = setInterval(function(){
+          cur += inc; if(cur >= target){cur = target; clearInterval(timer);}
+          el.textContent = Math.round(cur);
+        }, step);
+        cio.unobserve(el);
+      }
+    });
+  },{threshold:.4});
+  counters.forEach(function(c){cio.observe(c);});
+
+  // Form submit
+  function handleSubmit(e){
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // Mobile menu
+  function toggleMenu(){
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMobile(){
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+</script>
+</body>
+</html>
