@@ -386,27 +386,27 @@
       <h3>Ready to work together?</h3>
       <p>Whether you need a Google profile overhaul, an AI workflow, or a brand refresh — I'm here. Drop me a message and I'll respond within 24 hours.</p>
       <a href="mailto:kishoresakthi1017@gmail.com" class="clink">
-        <span class="clink-icon">✉</span>kishore@example.com
+        <span class="clink-icon">✉</span>Draft, click, and connect E-mail!
       </a>
       <a href="https://api.whatsapp.com/send?phone=919786750241&text=Hello,%20more%20information" class="clink">
-        <span class="clink-icon">💬</span>+91 99999 00000 (WhatsApp)
+        <span class="clink-icon">💬</span>Let's chat! Tap to WhatsApp.
       </a>
       <a href="https://www.instagram.com/Kishore.ly/" class="clink">
-        <span class="clink-icon">📸</span>@kishore.creates
+        <span class="clink-icon">📸</span>Slide into our DMs to instgram.
       </a>
       <a href="https://www.linkedin.com/in/kishore2000" class="clink">
-        <span class="clink-icon">💼</span>linkedin.com/in/kishore
+        <span class="clink-icon">💼</span>Let’s grow your network.
       </a>
       <p class="demo-note">↑ Tab to redirect.</p>
     </div>
     <div>
-      <form class="form" id="contactForm" onsubmit="handleSubmit(event)">
+      <form class="form" id="contactForm" action="https://formspree.io/f/xjgzgzzl" method="POST" onsubmit="handleSubmit(event)">
         <div class="form-row">
-          <input type="text" placeholder="Your Name" required/>
-          <input type="email" placeholder="Email Address" required/>
+          <input type="text" name="name" placeholder="Your Name" required/>
+          <input type="email" name="email" placeholder="Email Address" required/>
         </div>
-        <input type="text" placeholder="Subject (e.g. Google Profile Optimization)"/>
-        <textarea placeholder="Tell me about your project — what do you need and what results are you looking for?"></textarea>
+        <input type="text" name="subject" placeholder="Subject (e.g. Google Profile Optimization)"/>
+        <textarea name="message" placeholder="Tell me about your project — what do you need and what results are you looking for?"></textarea>
         <button type="submit" class="form-btn">Send Message →</button>
       </form>
       <div class="form-success" id="formSuccess" style="display:none;">
