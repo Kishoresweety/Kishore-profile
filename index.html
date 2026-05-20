@@ -427,7 +427,8 @@
     <a href="https://api.whatsapp.com/send?phone=919786750241&text=Hello,%20more%20information">WhatsApp</a>
   </div>
 </footer>
-
+  
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   // Scroll progress
   window.addEventListener('scroll', function(){
@@ -475,12 +476,50 @@
   counters.forEach(function(c){cio.observe(c);});
 
   // Form submit
+  // Initialize EmailJS
+  emailjs.init("QbB2SJ_ed_uyjCE5i");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const form = document.getElementById('contactForm');
+    const button = form.querySelector('button');
+
+    // Loading state
+    button.innerText = "Sending...";
+    button.disabled = true;
+
+    emailjs.sendForm(
+      "service_gjtudu8",
+      "template_yglcplm",
+      form
+    )
+    .then(() => {
+
+      // Hide form
+      form.style.display = 'none';
+
+      // Show success message
+      document.getElementById('formSuccess').style.display = 'block';
+
+    })
+    .catch((error) => {
+
+      console.error("EmailJS Error:", error);
+
+      alert("Failed to send message. Please try again.");
+
+      button.innerText = "Send Message →";
+      button.disabled = false;
+    });
+  }
+  /*
   function handleSubmit(e){
     e.preventDefault();
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   }
-
+  */
   // Mobile menu
   function toggleMenu(){
     document.getElementById('mobileMenu').classList.toggle('open');
